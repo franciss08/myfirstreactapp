@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import {List} from './modules/List';
 import './App.css';
+import {ToDoList} from './modules/TodoList';
 
 function App() {
   const [colour, setColour] = useState('blue');
@@ -41,6 +42,9 @@ function App() {
         <button onClick={handleSubmit}>Change colour</button>
         <List previousColors={previousColors} jolly="yes"/>
       </header>
+      <main>
+        <ToDoList />
+      </main>
     </div>
   );
 }
