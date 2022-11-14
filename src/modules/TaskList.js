@@ -1,23 +1,21 @@
 import React from "react";
 import { Task } from "./Task";
-import { useState } from "react";
 
 export const TaskList = (props) => {
-    const {tasks} = props;
-
-    const [childData, setChildData] = useState();
-
-    const getChildData = (data) => {
-        setChildData(data);
-    }
-
+    const { tasks, handleCheckboxToggle, clearCheckedTasks } = props;
+    
     return (
         <div>
-            <p>Task List</p>
+            <h3>Task List</h3>
             <ul>
-            {tasks.map((task,index) => <Task key={index} task={task} taskNumber={index + 1} passData={getChildData}/>)}
+            {tasks.map((task,index) => <Task 
+                key={index} 
+                task={task.task} 
+                taskNumber={index + 1}
+                checkedValue={task.checked}
+                handleCheckboxToggle={handleCheckboxToggle} />)}
             </ul>
-            <button>Clear checked tasks</button>
+            <button onClick={clearCheckedTasks}>Clear checked tasks</button>
         </div>
     )
 }
